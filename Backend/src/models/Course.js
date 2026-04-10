@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose"
-const taskSchema = new mongoose. Schema(
+const courseSchema = new mongoose. Schema(
 {
     title: {
     type: String,
@@ -21,5 +21,5 @@ const taskSchema = new mongoose. Schema(
         timestamps: true, // createdAt và updatedAt tự động thêm vào
     }
 );
-const Task = mongoose.model("Task",taskSchema);
-export default Task;
+const Course = mongoose.model("Course",courseSchema);
+export default Course;
