@@ -3,6 +3,7 @@ import { connectDB } from "./config/db.js";
 import courseRoute from "./routes/coursesRouter.js"
 import dotenv from "dotenv"
 import express from "express"
+import cors from 'cors';
 
 dotenv.config();
 connectDB();
@@ -13,7 +14,7 @@ const PORT = process.env.PORT || 3000
 const app = express();
 app.use(express.json());
 app.use("/api/courses/", courseRoute);
-
+app.use(cors());
 
 // Bước 6: Khởi động server
 app.listen(PORT, () => {
