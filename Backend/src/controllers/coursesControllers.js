@@ -12,6 +12,13 @@ export const getAllCourses = async(req, res) => {
   }
 }; 
 
+export const getCourses = async (req, res) => {
+    const { q } = req.query; // Lấy từ khóa từ ?q=...
+    const query = q ? { title: { $regex: q, $options: 'i' } } : {};
+    const courses = await Course.find(query);
+    res.json(courses);
+};
+
 export const createCourse = async(req,res) =>{
   try {
     const {title} = req.body;
