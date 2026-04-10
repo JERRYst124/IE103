@@ -1,25 +1,36 @@
-import mongoose, { Schema } from "mongoose"
+import mongoose from "mongoose";
+
 const courseSchema = new mongoose.Schema(
-{
+  {
     title: {
-    type: String,
-    required: true,
-    trim: true,
-    },
-    status: {
-        type: String,
-        enum: ["active", "complete"],
-        default: "active",
-    },
-    completedAt: {
-        type: Date,
-        default: null,
+      type: String,
+      required: true,
+      trim: true,
     },
 
+    duration: {
+      type: String,
+      required: true,
+      default: "Đang cập nhật",
     },
-    {
-        timestamps: true, // createdAt và updatedAt tự động thêm vào
+    image: { 
+      type: String, 
+      default: "https://via.placeholder.com/300x200"
+    },
+    description: {
+      type: String,
+      trim: true,
+    },
+
+    price: {
+      type: Number,
+      default: 0,
     }
+  },
+  {
+    timestamps: true, 
+  }
 );
-const Course = mongoose.model("Course",courseSchema);
+
+const Course = mongoose.model("Course", courseSchema);
 export default Course;

@@ -6,32 +6,22 @@ dotenv.config();
 
 const courses = [
   {
-    title: "Lập trình Web Fullstack với MERN",
-    instructor: "ThS. Nguyễn Văn A",
-    price: 890000,
-    image: "https://img.youtube.com/vi/7CqJlxBYj-M/maxresdefault.jpg",
-    status: "active"
+    title: "Lập trình Web cho người mới bắt đầu",
+    duration: "15 giờ",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500",
+    price: 500000
   },
   {
-    title: "Cấu trúc dữ liệu và Giải thuật (UIT)",
-    instructor: "TS. Trần Thị B",
-    price: 550000,
-    image: "https://img.youtube.com/vi/8hly31xKli0/maxresdefault.jpg",
-    status: "active"
+    title: "Khóa học ReactJS nâng cao",
+    duration: "20 giờ",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500",
+    price: 800000
   },
   {
-    title: "Thiết kế giao diện UI/UX với Figma",
-    instructor: "Designer Lê C",
-    price: 1200000,
-    image: "https://img.youtube.com/vi/ft30zcMlqao/maxresdefault.jpg",
-    status: "active"
-  },
-  {
-    title: "Nhập môn Trí tuệ nhân tạo",
-    instructor: "GS. Phạm D",
-    price: 0,
-    image: "https://img.youtube.com/vi/JMUxmLtuSkg/maxresdefault.jpg",
-    status: "active"
+    title: "Cấu trúc dữ liệu và Giải thuật",
+    duration: "30 giờ",
+    image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=500",
+    price: 0
   }
 ];
 
