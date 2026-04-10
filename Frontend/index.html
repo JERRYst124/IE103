@@ -451,49 +451,34 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       class="astro-vvvwv3sm"
     >
-        async function loadCourses() {
+            async function loadCourses() {
         try {
-          // 1. Gọi đến cây cầu Backend
-          const response = await fetch('http://localhost:3000/api/courses');
-          const courses = await response.json(); // Dữ liệu lấy từ MongoDB
+          const response = await fetch('http://localhost:3000/api/tasks'); // Đổi thành /api/courses sau khi bạn refactor
+          const courses = await response.json();
 
-          const container = document.getElementById('course-list-container');
-          container.innerHTML = ''; // Xóa nội dung cũ (nếu có)
+          const container = document.getElementById('course-container'); // Giả sử bạn đặt ID này cho vùng chứa các card
+          container.innerHTML = ''; // Xóa các card cũ
 
-          // 2. Vòng lặp duyệt qua từng khóa học trong Database
           courses.forEach(course => {
-            // Tạo khối HTML cho từng khóa học (dùng lại mẫu Card Bootstrap của bạn)
-            const courseCard = `
-              <div class="col">
-                <div class="card shadow-sm h-100">
-                  <img src="${course.thumbnailUrl}" class="card-img-top" alt="${course.title}">
-
-                  <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">${course.title}</h5>
-                    <p class="card-text text-muted">Giảng viên: ${course.instructor}</p>
-                    <div class="mt-auto">
-                      <span class="fw-bold fs-5">${course.price.toLocaleString('vi-VN')} ₫</span>
-                      <div class="d-flex justify-content-between align-items-center mt-3">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-primary">Xem chi tiết</button>
-                        </div>
-                      </div>
-                    </div>
+            container.innerHTML += `
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <img src="${course.thumbnailUrl || 'https://via.placeholder.com/300'}" class="card-img-top">
+                  <div class="card-body">
+                    <h5 class="card-title">${course.title}</h5>
+                    <p class="card-text">Giảng viên: ${course.instructor || 'Chưa cập nhật'}</p>
+                    <p class="text-primary fw-bold">${course.price ? course.price.toLocaleString() + 'đ' : 'Miễn phí'}</p>
+                    <a href="#" class="btn btn-primary">Học ngay</a>
                   </div>
                 </div>
               </div>
             `;
-
-            // Đắp HTML vừa tạo vào Container
-            container.innerHTML += courseCard;
           });
-
         } catch (error) {
-          console.error("Lỗi khi tải dữ liệu:", error);
+          console.error("Lỗi khi tải khóa học:", error);
         }
       }
 
-      // Chạy hàm khi trang web vừa load xong
       loadCourses();
     </script>
   </body>
